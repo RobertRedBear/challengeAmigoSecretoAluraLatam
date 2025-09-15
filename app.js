@@ -8,7 +8,7 @@ function asignarTexto(element, texto) {
     elementHtml.innerHTML = texto;
 }
 
-function mensajesInicio(){
+function mensajesInicio() {
     //inicio
     asignarTexto('h2', 'Digite el nombre de sus amigos')
 }
@@ -16,28 +16,43 @@ function mensajesInicio(){
 mensajesInicio();
 
 //funcion para agregar los nombres al arreglo
-function agregarAmigo(){
-    listaAmigos.push(numeroUsuario = document.getElementById('amigo').value)
-    console.log(listaAmigos)
+function agregarAmigo() {
+    if (document.getElementById('amigo').value == '') {
+        alert('Ingrese un valor')
+    } else {
+        listaAmigos.push(document.getElementById('amigo').value)
+        console.log(listaAmigos)
+    }
 }
 
 //funcion para limpiarla casilla
-function limpiarCampo(){
+function limpiarCampo() {
     let valorCaja = document.querySelector('#amigo')
     valorCaja.value = ''
 }
 
 //funcion sortear amigo de la lista
-function sortearAmigo(){
+function sortearAmigo() {
     const amigoSorteado = Math.floor(Math.random() * listaAmigos.length)
     console.log(amigoSorteado) // este el numero del amigo soreteado
-    for(let i = 0; i < listaAmigos.length; i++){
-        if (i == amigoSorteado){
-            asignarTexto(`h2`, `El amigo sorteado es ${listaAmigos[i]}`) //mostrar al amigo sorteado
+    for (let i = 0; i < listaAmigos.length; i++) {
+        if (i == amigoSorteado) {
+            asignarTexto(`li`, `El amigo sorteado es ${listaAmigos[i]}`) //mostrar al amigo sorteado
             break;
         }
     }
     //return amigoSorteado;
+}
+
+function mostrarAmigo() {
+    const lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; // limpiar lista antes de actualizar
+
+    for (let i = 0; i < listaAmigos.length; i++) {
+        const li = document.createElement("li");
+        li.textContent = listaAmigos[i];
+        lista.appendChild(li);
+    }
 }
 
 //let amigoListo = sortearAmigo;
