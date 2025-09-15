@@ -22,6 +22,7 @@ function agregarAmigo() {
     } else {
         listaAmigos.push(document.getElementById('amigo').value)
         console.log(listaAmigos)
+        mostrarAmigo()
     }
 }
 
@@ -37,10 +38,14 @@ function sortearAmigo() {
     console.log(amigoSorteado) // este el numero del amigo soreteado
     for (let i = 0; i < listaAmigos.length; i++) {
         if (i == amigoSorteado) {
-            asignarTexto(`li`, `El amigo sorteado es ${listaAmigos[i]}`) //mostrar al amigo sorteado
+            const resultado = document.getElementById('resultado');
+            resultado.innerHTML = `el afortunado es ${listaAmigos[i]}`;
+            const li = document.createElement("li")
             break;
         }
     }
+    const lista = document.getElementById("listaAmigos");
+    lista.innerHTML = ""; //limpiar lista
     //return amigoSorteado;
 }
 
